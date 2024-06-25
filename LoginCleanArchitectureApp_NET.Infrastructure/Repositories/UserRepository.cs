@@ -2,6 +2,7 @@
 using LoginCleanArchitectureApp_NET.Core.Interfaces;
 using LoginCleanArchitectureApp_NET.Infrastructure.Data;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Threading.Tasks;
 
 namespace LoginCleanArchitectureApp_NET.Infrastructure.Repositories
@@ -16,29 +17,35 @@ namespace LoginCleanArchitectureApp_NET.Infrastructure.Repositories
         }
 
 
-        public Task AddAsync(User user)
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            return await _context.Users.ToListAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task<User> GetByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            return await _context.Users.FindAsync(id);
         }
 
-        public Task<IEnumerable<User>> GetAllAsync()
+        public async Task AddAsync(User user)
         {
-            throw new System.NotImplementedException();
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<User> GetByIdAsync(int id)
+        public async Task UpdateAsync(User user)
         {
-            throw new System.NotImplementedException();
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(User user)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var user = await _context.Users.FindAsync(id);
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
         }
+
+
     }
 }
