@@ -16,7 +16,7 @@ namespace LoginCleanArchitectureApp_NET.Application.Services
 
         public async Task<User> Authenticate(string username, string password)
         {
-            return await _userRepository.Authenticate(username, password);
+            return await _userRepository.AuthenticateAsync(username, password);
         }
     }
 }
