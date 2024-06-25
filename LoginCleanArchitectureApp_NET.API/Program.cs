@@ -1,4 +1,6 @@
+using LoginCleanArchitectureApp_NET.Core.Interfaces;
 using LoginCleanArchitectureApp_NET.Infrastructure.Data;
+using LoginCleanArchitectureApp_NET.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Configuration;
@@ -18,6 +20,8 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader();
     });
 });
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 builder.Services.AddControllers();
