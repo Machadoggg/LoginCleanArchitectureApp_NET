@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.20" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LoginCleanArchitectureApp_NET.Application\LoginCleanArchitectureApp_NET.Application.csproj" />
+    <ProjectReference Include="..\LoginCleanArchitectureApp_NET.Infrastructure\LoginCleanArchitectureApp_NET.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
