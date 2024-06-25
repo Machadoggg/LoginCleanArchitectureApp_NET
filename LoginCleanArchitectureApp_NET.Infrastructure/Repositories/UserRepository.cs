@@ -17,6 +17,12 @@ namespace LoginCleanArchitectureApp_NET.Infrastructure.Repositories
         }
 
 
+        public async Task<User> AuthenticateAsync(string username, string password)
+        {
+            var user = await _context.Users.FindAsync(username, password);
+            return await Task.FromResult(user);
+        }
+
         public async Task<IEnumerable<User>> GetAllAsync()
         {
             return await _context.Users.ToListAsync();
@@ -45,7 +51,6 @@ namespace LoginCleanArchitectureApp_NET.Infrastructure.Repositories
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
         }
-
 
     }
 }
