@@ -5,4 +5,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LoginCleanArchitectureApp_NET.Application\LoginCleanArchitectureApp_NET.Application.csproj" />
+  </ItemGroup>
+
 </Project>
